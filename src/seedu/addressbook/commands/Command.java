@@ -37,11 +37,21 @@ public class Command {
     }
 
     /**
+     * Constructs a feedback message to summarise an operation that displayed a sorted list of persons.
+     *
+     * @param personsSorted used to generate summary
+     * @return summary message for persons displayed
+     */
+    public static String getMessageForPersonListSortedShownSummary(List<? extends ReadOnlyPerson> personsSorted) {
+        return String.format(Messages.MESSAGE_PERSONS_SORTED_OVERVIEW, personsSorted.size());
+    }
+
+    /**
      * Executes the command and returns the result.
      */
     public CommandResult execute(){
         throw new UnsupportedOperationException("This method is to be implemented by child classes");
-    };
+    }
 
     /**
      * Supplies the data the command will operate on.
