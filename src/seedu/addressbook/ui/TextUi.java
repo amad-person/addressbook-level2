@@ -1,11 +1,5 @@
 package seedu.addressbook.ui;
 
-import static seedu.addressbook.common.Messages.MESSAGE_GOODBYE;
-import static seedu.addressbook.common.Messages.MESSAGE_INIT_FAILED;
-import static seedu.addressbook.common.Messages.MESSAGE_PROGRAM_LAUNCH_ARGS_USAGE;
-import static seedu.addressbook.common.Messages.MESSAGE_USING_STORAGE_FILE;
-import static seedu.addressbook.common.Messages.MESSAGE_WELCOME;
-
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
@@ -74,31 +68,20 @@ public class TextUi {
 
 
     public void showWelcomeMessage(String version, String storageFilePath) {
-        String storageFileInfo = Formatter.getFormattedStorageFileInfo(storageFilePath);
-        showToUser(
-                Formatter.getFormatDivider(),
-                Formatter.getFormatDivider(),
-                MESSAGE_WELCOME,
-                version,
-                MESSAGE_PROGRAM_LAUNCH_ARGS_USAGE,
-                storageFileInfo,
-                Formatter.getFormatDivider());
+        showToUser(Formatter.getFormattedWelcomeMessage(version, storageFilePath));
     }
 
     public void showGoodbyeMessage() {
-        showToUser(MESSAGE_GOODBYE, Formatter.getFormatDivider(), Formatter.getFormatDivider());
+        showToUser(Formatter.getFormattedGoodbyeMessage());
     }
 
-
     public void showInitFailedMessage() {
-        showToUser(MESSAGE_INIT_FAILED, Formatter.getFormatDivider(), Formatter.getFormatDivider());
+        showToUser(Formatter.getFormattedInitFailedMessage());
     }
 
     /** Shows message(s) to the user */
-    public void showToUser(String... message) {
-        for (String m : message) {
-            out.println(Formatter.formatShowToUser(m));
-        }
+    public void showToUser(String message) {
+            out.print(message);
     }
 
     /**
@@ -110,7 +93,7 @@ public class TextUi {
         if (resultPersons.isPresent()) {
             showPersonListView(resultPersons.get());
         }
-        showToUser(result.feedbackToUser, Formatter.getFormatDivider());
+        showToUser(Formatter.getFormattedResult(result));
     }
 
     /**
@@ -127,6 +110,6 @@ public class TextUi {
 
     /** Shows a list of strings to the user, formatted as an indexed list. */
     private void showToUserAsIndexedList(List<String> list) {
-        showToUser(Formatter.getIndexedListForViewing(list));
+        showToUser(Formatter.getFormattedIndexedListForViewing(list));
     }
 }

@@ -1,8 +1,14 @@
 package seedu.addressbook.ui;
 
-import java.util.List;
+import seedu.addressbook.commands.CommandResult;
 
+import static seedu.addressbook.common.Messages.MESSAGE_GOODBYE;
+import static seedu.addressbook.common.Messages.MESSAGE_INIT_FAILED;
+import static seedu.addressbook.common.Messages.MESSAGE_PROGRAM_LAUNCH_ARGS_USAGE;
 import static seedu.addressbook.common.Messages.MESSAGE_USING_STORAGE_FILE;
+import static seedu.addressbook.common.Messages.MESSAGE_WELCOME;
+
+import java.util.List;
 
 public class Formatter {
     /** A decorative prefix added to the beginning of lines printed by AddressBook */
@@ -22,11 +28,6 @@ public class Formatter {
     /** Offset required to convert between 1-indexing and 0-indexing.  */
     public static final int DISPLAYED_INDEX_OFFSET = 1;
 
-    /** Returns divider for formatting */
-    public static String getFormatDivider() {
-        return DIVIDER;
-    }
-
     /** Returns regex for comment lines */
     public static String getCommentLineFormatRegex() {
         return COMMENT_LINE_FORMAT_REGEX;
@@ -42,18 +43,59 @@ public class Formatter {
         return "[Command entered:" + fullInputLine + "]";
     }
 
-    /** Returns formatted string of storage file path. */
-    public static String getFormattedStorageFileInfo(String storageFilePath) {
-        return String.format(MESSAGE_USING_STORAGE_FILE, storageFilePath);
+    /** Returns formatted welcome message. */
+    public static String getFormattedWelcomeMessage(String version, String storageFilePath) {
+        String storageFileInfo = String.format(MESSAGE_USING_STORAGE_FILE, storageFilePath);
+        return formatMessage(
+                DIVIDER,
+                DIVIDER,
+                MESSAGE_WELCOME,
+                version,
+                MESSAGE_PROGRAM_LAUNCH_ARGS_USAGE,
+                storageFileInfo,
+                DIVIDER
+        );
     }
 
-    /** Shows message(s) to the user. */
-    public static String formatShowToUser(String message) {
-        return LINE_PREFIX + message.replace("\n", LS + LINE_PREFIX);
+    /** Returns formatted goodbye message. */
+    public static String getFormattedGoodbyeMessage() {
+        return formatMessage(
+                MESSAGE_GOODBYE,
+                DIVIDER,
+                DIVIDER
+        );
+    }
+
+    /** Returns formatted init failed message. */
+    public static String getFormattedInitFailedMessage() {
+        return formatMessage(
+                MESSAGE_INIT_FAILED,
+                DIVIDER,
+                DIVIDER
+        );
+    }
+
+    /** Returns formatted string for displaying result of command. */
+    public static String getFormattedResult(CommandResult result) {
+        return formatMessage(
+                result.feedbackToUser,
+                DIVIDER
+        );
+    }
+
+    /** Creates and returns formatted message. */
+    private static String formatMessage(String... message) {
+        final StringBuilder formatted = new StringBuilder();
+
+        for (String m : message) {
+            formatted.append(LINE_PREFIX).append(m.replace("\n", LS + LINE_PREFIX)).append("\n");
+        }
+
+        return formatted.toString();
     }
 
     /** Formats a list of strings as a viewable indexed list. */
-    public static String getIndexedListForViewing(List<String> listItems) {
+    public static String getFormattedIndexedListForViewing(List<String> listItems) {
         return formatIndexedListForViewing(listItems);
     }
 
