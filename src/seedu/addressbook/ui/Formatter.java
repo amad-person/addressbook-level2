@@ -1,6 +1,7 @@
 package seedu.addressbook.ui;
 
 import seedu.addressbook.commands.CommandResult;
+import seedu.addressbook.data.person.ReadOnlyPerson;
 
 import static seedu.addressbook.common.Messages.MESSAGE_GOODBYE;
 import static seedu.addressbook.common.Messages.MESSAGE_INIT_FAILED;
@@ -8,6 +9,7 @@ import static seedu.addressbook.common.Messages.MESSAGE_PROGRAM_LAUNCH_ARGS_USAG
 import static seedu.addressbook.common.Messages.MESSAGE_USING_STORAGE_FILE;
 import static seedu.addressbook.common.Messages.MESSAGE_WELCOME;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Formatter {
@@ -40,7 +42,9 @@ public class Formatter {
 
     /** Returns formatted string of prompt displaying what command the user entered. */
     public static String getFormattedEnteredCommand(String fullInputLine) {
-        return "[Command entered:" + fullInputLine + "]";
+        return formatMessage(
+                "[Command entered:" + fullInputLine + "]"
+        );
     }
 
     /** Returns formatted welcome message. */
@@ -109,7 +113,7 @@ public class Formatter {
             displayIndex++;
         }
 
-        return formatted.toString();
+        return formatMessage(formatted.toString());
     }
 
     /** Returns formatted string of each list item. */
