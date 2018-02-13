@@ -25,6 +25,7 @@ public class SortCommand extends Command {
     public CommandResult execute() {
         List<ReadOnlyPerson> sortedPersons = sortPersonListByName(addressBook.getAllPersons().immutableListView());
 
+        // TODO: save the sorted list in the addressbook, not just display
         return new CommandResult(getMessageForPersonListSortedShownSummary(sortedPersons), sortedPersons);
     }
 
