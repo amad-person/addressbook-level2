@@ -29,6 +29,8 @@ public class Person implements ReadOnlyPerson {
         this.email = email;
         this.address = address;
         this.tags = new UniqueTagList(tags); // protect internal tags from changes in the arg list
+        incNextSequenceNumberByOne();
+        setSequenceNumber(getNextSequenceNumber());
     }
 
     /**
@@ -63,19 +65,31 @@ public class Person implements ReadOnlyPerson {
         return new UniqueTagList(tags);
     }
 
+    /**
+     * Returns sequence number of Person
+     */
     public int getSequenceNumber() {
         return this.sequenceNumber;
     }
 
-    public void setSequenceNumber(int sequenceNumber) {
+    /**
+     * Sets sequence number of Person
+     */
+    private void setSequenceNumber(int sequenceNumber) {
         this.sequenceNumber = sequenceNumber;
     }
 
-    public static int getNextSequenceNumber() {
+    /**
+     * Returns the next sequence number of Person
+     */
+    private static int getNextSequenceNumber() {
         return nextSequenceNumber;
     }
 
-    public static void incNextSequenceNumberByOne() {
+    /**
+     * Increments the next sequence number by one.
+     */
+    private static void incNextSequenceNumberByOne() {
         nextSequenceNumber = nextSequenceNumber + 1;
     }
 
