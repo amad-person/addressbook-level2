@@ -58,7 +58,10 @@
 # test sort persons command
 ##########################################################
 
+  add Aadyaa p/111111 e/this@is.not.a.real.email.com a/666, some street
   sort
+  list
+  delete 6
 
 ##########################################################
 # test view/viewall persons command

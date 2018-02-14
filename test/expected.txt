@@ -140,14 +140,31 @@
 || Enter command: || [Command entered:  add Esther Potato p/555555 e/esther@not.a.real.potato pa/555, epsilon street t/tubers t/starchy]
 || This person already exists in the address book
 || ===================================================
+|| Enter command: || [Command entered:  add Aadyaa p/111111 e/this@is.not.a.real.email.com a/666, some street]
+|| New person added: Aadyaa Phone: 111111 Email: this@is.not.a.real.email.com Address: 666, some street Tags: 
+|| ===================================================
 || Enter command: || [Command entered:  sort]
+|| 	1. Aadyaa Phone: 111111 Email: this@is.not.a.real.email.com Address: 666, some street Tags: 
+|| 	2. Adam Brown Phone: 111111 Email: adam@gmail.com Address: 111, alpha street Tags: 
+|| 	3. Betsy Choo Tags: [secretive]
+|| 	4. Charlie Dickson Email: charlie.d@nus.edu.sg Address: 333, gamma street Tags: [school][friends]
+|| 	5. Dickson Ee Phone: 444444 Address: 444, delta street Tags: [friends]
+|| 	6. Esther Potato Phone: 555555 Email: esther@not.a.real.potato Tags: [tubers][starchy]
+|| 
+|| 6 persons sorted!
+|| ===================================================
+|| Enter command: || [Command entered:  list]
 || 	1. Adam Brown Phone: 111111 Email: adam@gmail.com Address: 111, alpha street Tags: 
 || 	2. Betsy Choo Tags: [secretive]
 || 	3. Charlie Dickson Email: charlie.d@nus.edu.sg Address: 333, gamma street Tags: [school][friends]
 || 	4. Dickson Ee Phone: 444444 Address: 444, delta street Tags: [friends]
 || 	5. Esther Potato Phone: 555555 Email: esther@not.a.real.potato Tags: [tubers][starchy]
+|| 	6. Aadyaa Phone: 111111 Email: this@is.not.a.real.email.com Address: 666, some street Tags: 
 || 
-|| 5 persons sorted!
+|| 6 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  delete 6]
+|| Deleted Person: Aadyaa Phone: 111111 Email: this@is.not.a.real.email.com Address: 666, some street Tags: 
 || ===================================================
 || Enter command: || [Command entered:  view]
 || Invalid command format! 
@@ -174,7 +191,7 @@
 || The person index provided is invalid
 || ===================================================
 || Enter command: || [Command entered:  view 6]
-|| The person index provided is invalid
+|| Person could not be found in address book
 || ===================================================
 || Enter command: || [Command entered:  viewall -1]
 || The person index provided is invalid
@@ -183,7 +200,7 @@
 || The person index provided is invalid
 || ===================================================
 || Enter command: || [Command entered:  viewall 6]
-|| The person index provided is invalid
+|| Person could not be found in address book
 || ===================================================
 || Enter command: || [Command entered:  view 1]
 || Viewing person: Adam Brown Phone: 111111 Email: adam@gmail.com Address: 111, alpha street Tags: 
