@@ -69,8 +69,8 @@ public class AddCommand extends Command {
             addressBook.addPerson(toAdd);
             return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
         } catch (UniquePersonList.DuplicatePersonException dpe) {
+            Person.setNextSequenceNumber(toAdd.getSequenceNumber() - 1);
             return new CommandResult(MESSAGE_DUPLICATE_PERSON);
         }
     }
-
 }

@@ -25,6 +25,8 @@ public class AddressBook {
     private final UniquePersonList allPersons;
     private final UniqueTagList allTags; // can contain tags not attached to any person
 
+    private static int INIT_SEQUENCE_NUM = 0;
+
     /**
      * Creates an empty address book.
      */
@@ -105,6 +107,7 @@ public class AddressBook {
     public void clear() {
         allPersons.clear();
         allTags.clear();
+        Person.setNextSequenceNumber(INIT_SEQUENCE_NUM);
     }
 
     /**

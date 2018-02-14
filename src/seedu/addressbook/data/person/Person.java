@@ -83,14 +83,18 @@ public class Person implements ReadOnlyPerson {
      * Returns the next sequence number of Person
      */
     private static int getNextSequenceNumber() {
-        return nextSequenceNumber;
+        return Person.nextSequenceNumber;
     }
 
     /**
      * Increments the next sequence number by one.
      */
     private static void incNextSequenceNumberByOne() {
-        nextSequenceNumber = nextSequenceNumber + 1;
+        Person.nextSequenceNumber = Person.nextSequenceNumber + 1;
+    }
+
+    public static void setNextSequenceNumber(int nextSequenceNumber) {
+        Person.nextSequenceNumber = nextSequenceNumber;
     }
 
     /**
