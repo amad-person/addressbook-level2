@@ -16,6 +16,10 @@ public class Person implements ReadOnlyPerson {
     private Address address;
 
     private final UniqueTagList tags;
+
+    private int sequenceNumber;
+    private static int nextSequenceNumber;
+
     /**
      * Assumption: Every field must be present and not null.
      */
@@ -57,6 +61,22 @@ public class Person implements ReadOnlyPerson {
     @Override
     public UniqueTagList getTags() {
         return new UniqueTagList(tags);
+    }
+
+    public int getSequenceNumber() {
+        return this.sequenceNumber;
+    }
+
+    public void setSequenceNumber(int sequenceNumber) {
+        this.sequenceNumber = sequenceNumber;
+    }
+
+    public static int getNextSequenceNumber() {
+        return nextSequenceNumber;
+    }
+
+    public static void incNextSequenceNumberByOne() {
+        nextSequenceNumber = nextSequenceNumber + 1;
     }
 
     /**
